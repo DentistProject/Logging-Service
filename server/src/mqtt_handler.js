@@ -1,4 +1,5 @@
 const mqtt = require('mqtt');
+const Logging = require('./models/logging');
 
 class MqttHandler {
   constructor() {
@@ -29,12 +30,18 @@ class MqttHandler {
     // When a message arrives, console.log it
     this.mqttClient.on('message', function (topic, message) {
       console.log(message.toString());
-
-
+      const logging = new Logging({
+        messageLog: message.toString()
+      });
+      logging.save();
     });
+
+
+
 
     this.mqttClient.on('close', () => {
       console.log(`mqtt client disconnected`);
+      
 
     });
   }
