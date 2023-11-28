@@ -4,9 +4,9 @@ const Logging = require('./models/logging');
 class MqttHandler {
   constructor() {
     this.mqttClient = null;
-    this.host = 'ssl://06c9231f22d4457abe0282a4302eda82.s2.eu.hivemq.cloud:8883';
-    this.username = 'toothcheck'; // mqtt credentials if these are needed to connect
-    this.password = '5vuiygrR6vygB!';
+    this.host = process.env.MQTT_HOST ||'mqtt://broker.hivemq.com:1883';
+    this.username = process.env.MQTT_USERNAME;
+    this.password = process.env.MQTT_PASSWORD;
   }
 
   connect() {
