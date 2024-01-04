@@ -11,8 +11,8 @@ const routes = require('./controllers/routes');
 // Load environment variables from .env file
 dotenv.config({ path: path.resolve(__dirname, '../.env') })
 //variables
-const mongoURI = process.env.MONGODB_URI;
-const port = process.env.PORT || 9090;
+const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/LoggingDB';
+const port = process.env.PORT || 8082;
 // Connect to MongoDB
 mongoose.connect(mongoURI).catch(function (err) {
     if (err) {
