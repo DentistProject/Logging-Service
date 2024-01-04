@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const loggingSchema = new Schema({
 messageLog : {
-    type: String,
-    required: true,
+    type: String
 },
 });
 
