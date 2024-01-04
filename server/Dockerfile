@@ -15,7 +15,7 @@ COPY . .
 
 
 # Expose the port your app runs on
-EXPOSE 9090
+EXPOSE 8082
 
 # Define the command to run your application
 CMD ["npm", "run", "start"]
