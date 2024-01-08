@@ -11,8 +11,8 @@ const routes = require('./controllers/routes');
 // Load environment variables from .env file
 dotenv.config({ path: path.resolve(__dirname, '../.env') })
 //variables
-const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/LoggingDB';
-const port = process.env.PORT || 8082;
+const mongoURI = process.env.MONGODB_URI;
+const port = process.env.PORT || 9090;
 // Connect to MongoDB
 mongoose.connect(mongoURI).catch(function (err) {
     if (err) {
@@ -43,6 +43,10 @@ app.use(function (err, req, res, next) {
 
 app.use('/api', routes);
 // Routes
+
+app.get("/api", function (req, res) {
+    res.json({ message: "Greeting senior" });
+});
 //MQTT TEST
 app.post("/send-mqtt", function(req, res) {
     mqttClient.sendMessage(req.body.message);
