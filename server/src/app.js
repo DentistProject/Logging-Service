@@ -43,6 +43,10 @@ app.use(function (err, req, res, next) {
 
 app.use('/api', routes);
 // Routes
+
+app.get("/api", function (req, res) {
+    res.json({ message: "Greeting senior" });
+});
 //MQTT TEST
 app.post("/send-mqtt", function(req, res) {
     mqttClient.sendMessage(req.body.message);
